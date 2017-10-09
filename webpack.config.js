@@ -14,8 +14,10 @@ let isDev = args.dev;
 let entry = ['./src/site.js'];
 let devtool;
 
+let port = process.env.PORT || 8080;
+
 if (isDev) {
-    entry.push('webpack-dev-server/client?http://0.0.0.0:8080');
+    entry.push('webpack-dev-server/client?http://0.0.0.0:' + port);
     devtool = 'source-map';
 }
 
@@ -77,7 +79,7 @@ module.exports = {
     devServer: {
         contentBase: buildPath,
         host: '0.0.0.0',
-        port: 8080
+        port: port
     }
 };
 
